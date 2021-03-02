@@ -4,7 +4,8 @@ import './index.css';
 // import App from './App';
 // import App from './Intro';
 // import Game from './Game';
-import App from './Documentation';
+// import App from './Documentation';
+import App from './ReactRouter';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
