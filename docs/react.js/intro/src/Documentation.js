@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 // 1
@@ -69,7 +68,7 @@ import './App.css';
 //             <form onSubmit={this.handleSubmit}>
 //                 <label>
 //                     Name:
-//                     <input type="text" value={this.state.value} onChange={this.handleChange}/>
+//                     <input type="text" value={this.state.value} onChange={this.handleChange} onWheel={(e) => {console.log(e)}}/>
 //                 </label>
 //                 <input type="submit" value="Send"/>
 //             </form>
@@ -163,97 +162,225 @@ import './App.css';
 
 // 5
 
-const scaleNames = {
-    c: "Цельсия",
-    f: "Фаренгейта",
-};
+// const scaleNames = {
+//     c: "Цельсия",
+//     f: "Фаренгейта",
+// };
+//
+// function BoilingVerdict(props) {
+//     if (props.celsius >= 100) {
+//         return <p>Вода закипит.</p>
+//     } else {
+//         return <p>Вода не закипит.</p>
+//     }
+// }
+//
+// function toCelsius(fahrenheit) {
+//     return (fahrenheit - 32) * 5 / 9;
+// }
+//
+// function toFahrenheit(celsius) {
+//     return (celsius * 9 / 5) + 32;
+// }
+//
+// function tryConvert(temperature, convert) {
+//     const input = parseFloat(temperature);
+//     if (Number.isNaN(input)) {
+//         return '';
+//     }
+//     const output = convert(input);
+//     const rounded = Math.round(output * 1000) / 1000;
+//     return rounded.toString();
+// }
+//
+// class TemperatureInput extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleChange = this.handleChange.bind(this);
+//     }
+//
+//     handleChange(event) {
+//         this.props.onTemperatureChange(event.target.value);
+//     }
+//
+//     render() {
+//         const temperature = this.props.temperature;
+//         const scale = this.props.scale;
+//         return (
+//             <fieldset>
+//                 <legend>Введите температуру в градусах {scaleNames[scale]}:</legend>
+//                 <input
+//                     value={temperature}
+//                     onChange={this.handleChange} />
+//             </fieldset>
+//         );
+//     }
+// }
+//
+// class Calculator extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             temperature: '',
+//             scale: 'c'
+//         };
+//         this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+//         this.handleFarenheitChange = this.handleFarenheitChange.bind(this);
+//     }
+//
+//     handleCelsiusChange(temperature) {
+//         this.setState({scale: 'c', temperature})
+//     }
+//
+//     handleFarenheitChange(temperature) {
+//         this.setState({scale: 'f', temperature})
+//     }
+//
+//     render() {
+//         const scale = this.state.scale;
+//         const temperature = this.state.temperature;
+//         const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+//         const farenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+//
+//         return (
+//             <div>
+//                 <TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange} />
+//                 <TemperatureInput scale="f" temperature={farenheit} onTemperatureChange={this.handleFarenheitChange} />
+//                 <BoilingVerdict celsius={parseFloat(celsius)} />
+//             </div>
+//         )
+//     }
+// }
 
-function BoilingVerdict(props) {
-    if (props.celsius >= 100) {
-        return <p>Вода закипит.</p>
-    } else {
-        return <p>Вода не закипит.</p>
-    }
-}
 
-function toCelsius(fahrenheit) {
-    return (fahrenheit - 32) * 5 / 9;
-}
+// 6
 
-function toFahrenheit(celsius) {
-    return (celsius * 9 / 5) + 32;
-}
+// class Toggle extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             isToggleOn: true
+//         };
+//         this.handleClick = this.handleClick.bind(this);
+//     }
+//
+//
+//     handleClick() {
+//         this.setState(state => ({
+//             isToggleOn: !state.isToggleOn
+//         }));
+//     }
+//
+//     render() {
+//         return (
+//             <button onClick={this.handleClick}>
+//                 {this.state.isToggleOn ? "ON" : "OFF"}
+//             </button>
+//         );
+//     }
+// }
 
-function tryConvert(temperature, convert) {
-    const input = parseFloat(temperature);
-    if (Number.isNaN(input)) {
-        return '';
-    }
-    const output = convert(input);
-    const rounded = Math.round(output * 1000) / 1000;
-    return rounded.toString();
-}
 
-class TemperatureInput extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-    }
+// 7
 
-    handleChange(e) {
-        this.props.onTemperatureChange(e.target.value);
-    }
+// function UserGreeting(props) {
+//     return <h1>Welcome back!</h1>
+// }
+//
+// function GuestGreeting(props) {
+//     return <h1>Enter, please.</h1>
+// }
+//
+// function Greeting(props) {
+//     const isLoggedIn = props.isLoggedIn;
+//     if (isLoggedIn) {
+//         return <UserGreeting />;
+//     }
+//     return <GuestGreeting />;
+// }
 
-    render() {
-        const temperature = this.props.temperature;
-        const scale = this.props.scale;
-        return (
-            <fieldset>
-                <legend>Введите температуру в градусах {scaleNames[scale]}:</legend>
-                <input type="number" value={temperature} onChange={this.handleChange} />
-                <BoilingVerdict celsius={parseFloat(temperature)} />
-            </fieldset>
-        );
-    }
-}
 
-class Calculator extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleCelsiusChange = this.handleCelsiusChange.bind(this)
-        this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this)
-        this.state = {
-            temperature: '',
-            scale: 'c',
-        };
-    }
+// 8
 
-    handleCelsiusChange(temperature) {
-        this.setState({
-            scale: 'c',
-            temperature
-        });
-    }
+// function WarningBanner(props) {
+//     if (!props.warn) {
+//         return null;
+//     }
+//
+//     return (
+//         <div className="warning">
+//             Warning!
+//         </div>
+//     );
+// }
+//
+// class Page extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             showWarning: true
+//         };
+//         this.handleToggleClick = this.handleToggleClick.bind(this);
+//     }
+//
+//     handleToggleClick() {
+//         this.setState(state => ({
+//             showWarning: !state.showWarning
+//         }));
+//     }
+//
+//     render() {
+//         return (
+//             <div>
+//                 <WarningBanner warn={this.state.showWarning} />
+//                 <button onClick={this.handleToggleClick}>
+//                     {this.state.showWarning ? "Hide" : "Show"}
+//                 </button>
+//                 <input id="filesInput" type="file" multiple={true} />
+//             </div>
+//         )
+//     }
+// }
 
-    handleFahrenheitChange(temperature) {
-        this.setState({
-            scale: 'f',
-            temperature
-        });
-    }
 
-    render() {
-        const scale = this.state.scale;
-        const temperature = this.state.temperature;
-        const celsius =
-        return (
-            <div>
-                <TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange} />
-                <TemperatureInput scale="c" temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange} />
-            </div>
-        );
-    }
-}
+// 9
+
+// class FileInput extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//         this.fileInput = React.createRef();
+//     }
+//
+//     handleSubmit(event) {
+//         event.preventDefault();
+//         alert(
+//             `Selected file - ${this.fileInput.current.files[0].name}`
+//         );
+//     }
+//
+//     render() {
+//         return (
+//             <form onSubmit={this.handleSubmit}>
+//                 <label>
+//                     Upload file:
+//                     <input type="file" ref={this.fileInput} />
+//                 </label>
+//                 <br />
+//                 <button type="submit">Submit</button>
+//             </form>
+//         );
+//     }
+// }
+
+// 10
+
+
+
+
+
+
+
 
 function App() {
     // 1
@@ -269,7 +396,19 @@ function App() {
     // return <Reservation />
 
     // 5
-    return <Calculator />
+    // return <Calculator />
+
+    // 6
+    // return <Toggle />
+
+    // 7
+    // <Greeting isLoggedIn={false} />
+
+    // 8
+    // return <Page />
+
+    // 9
+    // return <FileInput />
 }
 
 export default App;
